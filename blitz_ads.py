@@ -116,9 +116,6 @@ def xp(delay):
         pag.click(box)
         time.sleep(delay)
 
-        logging.info("Get screenshot")
-        screenshot('xp', 'xp/')
-
         logging.info("Get XP from combat missions menu")
         pag.click(box_xp)
         time.sleep(delay)
@@ -188,8 +185,6 @@ def open_medium_box(delay):
         logging.info("Open box menu")
         open_box_menu(delay)
         logging.info("Take screenshot")
-        screenshot('box', 'box/')
-        boxes = [[598, 673, 233, 57], [1093, 673, 249, 62]]
 
         for box in pag.locateAllOnScreen('img//openBox.png', confidence=0.9):
                logging.info("Open second box")
@@ -200,7 +195,9 @@ def open_medium_box(delay):
                back_button()
                time.sleep(1)
                back_button()
+               time.sleep(1)
         back_button()
+        time.sleep(1)
 
 def open_box(counter, delay):
         """Stand for every day opaning 3 first boxes"""
@@ -275,7 +272,6 @@ while True:
                                 print("Open " + str(box) + " box.")
                                 box += 1
                                 open_box(count, timedelay)
-                                countScreenshot(logins[user_counter][:5])
                         time.sleep(timedelay)
 
                         if count == 4:
@@ -285,20 +281,16 @@ while True:
                                 logging.info("Open " + str(box) + " box.")
                                 print("Open " + str(box) + " box.")
                                 open_box(count, timedelay)
-                                countScreenshot(logins[user_counter][:5])
                                 box += 1
         
                 play_video(videoButtonLocation, timedelay)
-                countScreenshot(logins[user_counter][:5])
                 logging.info("Watch " + str(count) + " video.")
                 print("Watch " + str(count) + " video.")
                 count += 1
                 time.sleep(110)
 
-        elif count == 6:
-                countScreenshot(logins[user_counter][:5]) 
+        elif count == 6: 
                 count += 1
-                
                 if box == 3:
                         time.sleep(90)
                         open_box(count, timedelay)
