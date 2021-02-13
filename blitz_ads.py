@@ -101,7 +101,7 @@ def play_video(cordinates, delay):
 
         logging.info("Confirm to play video")
         pag.click(play_button[0], play_button[1])
-        time.sleep(45)
+        time.sleep(40)
         
         logging.info("Close video after 35 sec delay")
         screenshot('exit', 'exit/')
@@ -185,16 +185,21 @@ def change_user(login_text, password_text, delay):
 
 def open_medium_box(delay):
         """Check second and third boxes"""
-        check_if_main_menu()
+        logging.info("Open box menu")
         open_box_menu(delay)
+        logging.info("Take screenshot")
         screenshot('box', 'box/')
         boxes = [[598, 673, 233, 57], [1093, 673, 249, 62]]
 
-        for box in boxes:
-               if pag.locateOnScreen('img//openBox.png', region=box):
-                      time.sleep(delay)
-                      back_button()
-                      back_button()
+        for box in pag.locateAllOnScreen('img//openBox.png', confidence=0.9):
+               logging.info("Open second box")
+               logging.info(box)
+               pag.click(box)
+               print(box)
+               time.sleep(1)
+               back_button()
+               time.sleep(1)
+               back_button()
         back_button()
 
 def open_box(counter, delay):
