@@ -4,16 +4,6 @@ import time, random, logging, datetime, ast
 logging.basicConfig(filename='blitz.log',level=logging.DEBUG, format='%(asctime)s %(message)s')
 logging.info('Started')
 
-def screenResolution():
-       x, y = pag.size()
-       return x, y
-
-def halfOfScreen():
-        x, y = screenResolution()
-        x_axis = x / 2
-        y_axis = y / 2
-        return x_axis, y_axis
-
 def screenshot(text, folder):
         time.sleep(2)
         imgName = folder + text + str(datetime.datetime.today())[:16].replace(".", " ", 1).replace(":", "-", 1) + '.png'
