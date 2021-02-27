@@ -186,7 +186,7 @@ def open_medium_box(delay):
         open_box_menu(delay)
         logging.info("Take screenshot")
 
-        for box in pag.locateAllOnScreen('img//openBox.png', confidence=0.9):
+        for box in pag.locateAllOnScreen('img//openBox.png', grayscale=False):
                logging.info("Open second box")
                logging.info(box)
                pag.click(box)
